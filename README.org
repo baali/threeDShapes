@@ -2,11 +2,14 @@
   A 3D Object loader using text files. Rendering of various shapes and 
   interaction with them
 
+* Usage
+  Open reader.html in browser and drag obj.txt file in "drop zone".
+
 * Creating various geometry using THREE.js.
   + Working for sphere, cube and cylinder.
   + Interaction with objects working.
 
-* TODO
+* TO be done
   + Get more shapes working.
 
 * Credits
