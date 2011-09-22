@@ -1,0 +1,13 @@
+* Overview
+  A 3D Object loader using text files. Rendering of various shapes and 
+  interaction with them
+
+* Creating various geometry using THREE.js.
+  + Working for sphere, cube and cylinder.
+  + Interaction with objects working.
+
+* TODO
+  + Get more shapes working.
+
+* Credits
+  + Using [[https://github.com/mrdoob/three.js][three.js]] library from mrdoob.
