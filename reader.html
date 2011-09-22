@@ -139,10 +139,8 @@
 		                var cube = new THREE.Mesh( 
                                     new THREE.CubeGeometry(threeDObjects[key].xLength, 
                                                              threeDObjects[key].yLength, 
-                                                             threeDObjects[key].zLength, 
-                                                             1, 1, 1, 
-                                                             new THREE.MeshBasicMaterial( { color: parseInt(threeDObjects[key].color, 16) } )),
-                                new THREE.MeshFaceMaterial());
+                                                             threeDObjects[key].zLength),
+                                    new THREE.MeshBasicMaterial( { color: parseInt(threeDObjects[key].color, 16) } ));
                                 objects.push(cube);
 		                cube.position.z = -200;
                                 cube.position.x = -200;
