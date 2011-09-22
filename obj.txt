@@ -1,0 +1,25 @@
+{"sphere":
+        {
+        "type": "Sphere",
+         "radius":100,
+         "horizontalDivision": 32,
+         "verticalDivision": 32,
+         "color":"0x0000ff"
+        },
+"cylinder":
+        {
+        "type": "Cylinder",
+         "divisions":25,
+         "radius":50,
+         "length":400,
+         "color":"0xff00ff"
+        },
+"cube":
+        {
+        "type": "Cube",
+         "xLength":100,
+         "yLength":100,
+         "zLength":100,
+         "color":"0xff0000"
+        }
+}
