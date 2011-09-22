@@ -2,8 +2,8 @@
         {
         "type": "Sphere",
          "radius":100,
-         "horizontalDivision": 32,
-         "verticalDivision": 32,
+         "segments": 32,
+         "rings": 32,
          "color":"0x0000ff"
         },
 "cylinder":

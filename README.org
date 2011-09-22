@@ -9,7 +9,7 @@
   + Working for sphere, cube and cylinder.
   + Interaction with objects working.
 
-* TO be done
+* To be done
   + Get more shapes working.
 
 * Credits

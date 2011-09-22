@@ -107,8 +107,8 @@
                             if (threeDObjects[key].type == "Sphere") {
 		                var sphere = new THREE.Mesh( 
                                     new THREE.SphereGeometry(threeDObjects[key].radius, 
-                                                             threeDObjects[key].horizontalDivision, 
-                                                             threeDObjects[key].verticalDivision), 
+                                                             threeDObjects[key].segments, 
+                                                             threeDObjects[key].rings), 
                                     new THREE.MeshBasicMaterial( { color: parseInt(threeDObjects[key].color, 16) } )) ;
                                 objects.push(sphere);
 		                sphere.position.z = -200;
