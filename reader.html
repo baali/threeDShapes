@@ -49,7 +49,7 @@
             function plotObj(threeDObjects) {
                 var container, stats;
 
-		var camera, scene, renderer, projector;
+		var camera, scene, renderer, projector, light;
 
 		var cube, plane;
 
@@ -164,6 +164,12 @@
                     }
 
 		    projector = new THREE.Projector();
+
+		    scene.addLight( new THREE.AmbientLight( 0x404040 ) );
+		    light = new THREE.DirectionalLight( 0xffffff, 1 );
+		    light.position.z = 1;
+		    scene.addLight( light );
+
 		    renderer = new THREE.CanvasRenderer();
 		    renderer.setSize( window.innerWidth, window.innerHeight );
 
