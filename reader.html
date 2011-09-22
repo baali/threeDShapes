@@ -61,6 +61,7 @@
 
 		var windowHalfX = window.innerWidth / 2;
 		var windowHalfY = window.innerHeight / 2;
+                var objects[];
 		init();
 		animate();
 
@@ -119,6 +120,7 @@
 		    // cube.overdraw = true;
 		    // scene.addObject( cube );
 
+                    var counter = 0;
                     for (var key in threeDObjects) {
                         if (threeDObjects.hasOwnProperty(key)) {
                             console.log(threeDObjects[key].type);
@@ -128,6 +130,8 @@
                                                              threeDObjects[key].horizontalDivision, 
                                                              threeDObjects[key].verticalDivision), 
                                     new THREE.MeshBasicMaterial( { color: parseInt(threeDObjects[key].color, 16) } )) ;
+                                objects[counter] = sphere;
+                                counter += 1;
 		                sphere.position.z = -200;
 		                sphere.position.x = 100;
 		                sphere.overdraw = true;
@@ -141,6 +145,8 @@
                                                              1, 1, 1, 
                                                              new THREE.MeshBasicMaterial( { color: parseInt(threeDObjects[key].color, 16) } )),
                                 new THREE.MeshFaceMaterial());
+                                objects[counter] = cube;
+                                counter += 1;
 		                cube.position.z = -200;
                                 cube.position.x = -200;
 		                cube.overdraw = true;
@@ -153,6 +159,8 @@
                                                              threeDObjects[key].radius, 
                                                              threeDObjects[key].length),
                                     new THREE.MeshBasicMaterial( { color: parseInt(threeDObjects[key].color, 16) } ));
+                                objects[counter] = cylinder;
+                                counter += 1;
 		                cylinder.position.z = -200;
 		                cylinder.position.x = 0;
 		                cylinder.overdraw = true;
