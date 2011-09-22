@@ -42,7 +42,7 @@
 		<script type="text/javascript" src="js/Three.js"></script>
 
 		<script type="text/javascript" src="js/RequestAnimationFrame.js"></script>
-          <div id="drop_zone">Drop files here</div>
+          <div id="drop_zone">Drop file here</div>
           <output id="list"></output>
 
           <script>
@@ -180,7 +180,6 @@
 		    projector.unprojectVector( vector, camera );
 		    var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
 		    var intersects = ray.intersectObjects( objects );
-                    console.log(intersects.length);
 		    if ( intersects.length > 0 ) {
 		        intersects[ 0 ].object.materials[ 0 ].color.setHex( 0xffff00 );
 		    }
