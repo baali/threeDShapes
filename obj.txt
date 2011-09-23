@@ -4,7 +4,8 @@
          "radius":100,
          "segments": 32,
          "rings": 32,
-         "color":"0x0000ff"
+         "color":"0x0000ff",
+         "center":[200, 0, -200]
         },
 "cylinder":
         {
