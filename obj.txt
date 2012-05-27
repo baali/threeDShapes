@@ -22,5 +22,10 @@
          "yLength":100,
          "zLength":100,
          "color":"0xff0000"
+        },
+"circle":
+        {
+        "type": "Circle",
+        "radius":50
         }
 }

@@ -17,7 +17,7 @@
                 -moz-border-radius: 5px;
                 -webkit-border-radius: 5px;
                 border-radius: 5px;
-                padding: 25px;
+                padding: 50px;
                 text-align: center;
                 font: 20pt bold 'Vollkorn';
                 color: #bbb;
@@ -101,6 +101,70 @@
 
 		    scene = new THREE.Scene();
 
+		    parent = new THREE.Object3D();
+		    parent.position.y = 50;
+		    scene.addChild( parent );
+
+		    function addGeometry( geometry, points, spacedPoints, color, x, y, z, rx, ry, rz, s ) {
+
+			// 3d shape
+
+			var mesh = new THREE.Mesh( geometry, [ new THREE.MeshLambertMaterial( { color: color } ), new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true } ) ] );
+			mesh.position.set( x, y, z - 75 );
+			mesh.rotation.set( rx, ry, rz );
+			mesh.scale.set( s, s, s );
+                        scene.addObject( mesh) ;
+			// parent.addChild( mesh );
+
+			// solid line
+
+			var line = new THREE.Line( points, new THREE.LineBasicMaterial( { color: color, linewidth: 2 } ) );
+			line.position.set( x, y, z + 25 );
+			line.rotation.set( rx, ry, rz );
+			line.scale.set( s, s, s );
+                        scene.addObject( line ) ;                        
+			// parent.addChild( line );
+
+			// transparent line from real points
+
+			var line = new THREE.Line( points, new THREE.LineBasicMaterial( { color: color, opacity: 0.5 } ) );
+			line.position.set( x, y, z + 75 );
+			line.rotation.set( rx, ry, rz );
+			line.scale.set( s, s, s );
+                        scene.addObject( line ) ;                        
+			// parent.addChild( line );
+
+			// vertices from real points
+
+			var pgeo = THREE.GeometryUtils.clone( points );
+			var particles = new THREE.ParticleSystem( pgeo, new THREE.ParticleBasicMaterial( { color: color, size: 2, opacity: 0.75 } ) );
+			particles.position.set( x, y, z + 75 );
+			particles.rotation.set( rx, ry, rz );
+			particles.scale.set( s, s, s );
+                        scene.addObject( line ) ;                        
+			// parent.addChild( line );
+
+			// transparent line from equidistance sampled points
+
+			var line = new THREE.Line( spacedPoints, new THREE.LineBasicMaterial( { color: color, opacity: 0.2 } ) );
+			line.position.set( x, y, z + 100 );
+			line.rotation.set( rx, ry, rz );
+			line.scale.set( s, s, s );
+                        scene.addObject( line ) ;                        
+			// parent.addChild( line );
+
+			// equidistance sampled points
+
+			var pgeo = THREE.GeometryUtils.clone( spacedPoints );
+			var particles2 = new THREE.ParticleSystem( pgeo, new THREE.ParticleBasicMaterial( { color: color, size: 2, opacity: 0.5 } ) );
+			particles2.position.set( x, y, z + 100 );
+			particles2.rotation.set( rx, ry, rz );
+			particles2.scale.set( s, s, s );
+                        scene.addObject( particles2 );
+			// parent.addChild( particles2 );
+
+		    }
+
                     for (var key in threeDObjects) {
                         if (threeDObjects.hasOwnProperty(key)) {
                             console.log(threeDObjects[key].type);
@@ -161,6 +225,23 @@
                                 }
 		                cylinder.overdraw = true;
 		                scene.addObject( cylinder );
+                            }
+                            else if(threeDObjects[key].type == "Circle") {
+                                var radius = threeDObjects[key].radius;
+				var extrudeSettings = {	amount: .2,  bevelEnabled: true, bevelSegments: 2, steps: 1 };
+				var circleShape = new THREE.Shape();
+				circleShape.moveTo( 0, radius );
+				circleShape.quadraticCurveTo( radius, radius, radius, 0 );
+				circleShape.quadraticCurveTo( radius, -radius, 0, -radius );
+				circleShape.quadraticCurveTo( -radius, -radius, -radius, 0 );
+				circleShape.quadraticCurveTo( -radius, radius, 0, radius );
+
+				var circle3d = circleShape.extrude( extrudeSettings );
+				var circlePoints = circleShape.createPointsGeometry();
+				var circleSpacedPoints = circleShape.createSpacedPointsGeometry();
+                                addGeometry( circle3d, circlePoints, 
+                                             circleSpacedPoints, 0x00ff11, 
+                                             120,  250, 0, 0, 0, 0, 1 );
                             }
                         }
                     }
